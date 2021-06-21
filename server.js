@@ -1,5 +1,5 @@
 const express = require("express");
-
+const stripe = require('stripe')('sk_test_51J3AspC6Y2vAkhwfVZyFmAM9RhYPupL4KMuaVcRFiHaYH4bVUq0M1fPTT2moUwRxn1BKMRSBEj6IfszX4aidRKwU00lBLalPNR');
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
+// Add routes, both API and views
 app.use(routes);
 
 // Connect to the Mongo DB
